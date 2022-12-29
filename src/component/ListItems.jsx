@@ -31,48 +31,57 @@ function ListItems({ todo, setTodo }) {
     }
     return (
         <div>
-            {
-                todo.map(todos => (
-                    <li key={todos.id} className='list-none flex justify-between px-32'>
-                        {
-                            // edit ?
-                            editId === todos.id ?
-                                (
-                                    checkButton = true,
-                                    editButton = false,
-                                    <input type="text" value={title} onChange={editHandler} />
-                                ) :
-                                (
-                                    checkButton = false,
-                                    editButton = true,
-                                    <h4 > {todos.title}</h4>
-                                )
-                        }
-                        <div className='flex gap-5'>
+            <table className='w-auto'>
+                {
+
+                    todo.map(todos => (
+                        <li key={todos.id} className='list-none flex justify-between px-32 max-w-screen-lg pl-0 sm:pl-5 md:p-auto lg:max-w-xl'>
                             {
-                                checkButton &&
-                                <div className='flex align-middle gap-1' onClick={() => { checkHandler(todos) }}>
-                                    <i className="ri-check-fill"></i>
-                                    Check
-                                </div>
+                                // edit ?
+                                editId === todos.id ?
+                                    (
+                                        checkButton = true,
+                                        editButton = false,
+                                        <tr>
+                                            <input type="text" value={title} onChange={editHandler} />
+                                        </tr>
+                                    ) :
+                                    (
+                                        checkButton = false,
+                                        editButton = true,
+                                        <tr>
+                                            <h4 > {todos.title}</h4>
+                                        </tr>
+                                    )
                             }
 
-                            {
-                                editButton &&
-                                <div className='flex align-middle gap-1' onClick={() => { setTitle(todos.title); setEditId(todos.id) }}>
-                                    <i className="ri-pencil-fill"></i>
-                                    Edit
-                                </div>
-                            }
-                            <div className='flex align-middle gap-1' onClick={() => { deleteHandler(todos) }}>
-                                <i className="ri-delete-bin-5-fill"></i>
-                                Delete
-                            </div>
-                        </div>
-                    </li>
+                            <tr>
+                                <div className='flex gap-5'>
+                                    {
+                                        checkButton &&
+                                        <div className='flex align-middle gap-1' onClick={() => { checkHandler(todos) }}>
+                                            <i className="ri-check-fill"></i>
+                                            Check
+                                        </div>
+                                    }
 
-                ))
-            }
+                                    {
+                                        editButton &&
+                                        <div className='flex align-middle gap-1' onClick={() => { setTitle(todos.title); setEditId(todos.id) }}>
+                                            <i className="ri-pencil-fill"></i>
+                                            Edit
+                                        </div>
+                                    }
+                                    <div className='flex align-middle gap-1' onClick={() => { deleteHandler(todos) }}>
+                                        <i className="ri-delete-bin-5-fill"></i>
+                                        Delete
+                                    </div>
+                                </div>
+                            </tr>
+                        </li>
+                    ))
+                }
+            </table>
         </div >
     )
 }
