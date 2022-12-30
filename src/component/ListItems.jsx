@@ -4,7 +4,7 @@ import { useState } from 'react'
 function ListItems({ todo, setTodo }) {
     let checkButton = false
     let editButton = true
-    let edit = false
+    // let edit = false
     const [title, setTitle] = useState('')
     const [editId, setEditId] = useState([]);
     const deleteHandler = ({ id }) => {
@@ -31,57 +31,53 @@ function ListItems({ todo, setTodo }) {
     }
     return (
         <div>
-            <table className='w-auto'>
-                {
+            {
 
-                    todo.map(todos => (
-                        <li key={todos.id} className='list-none flex justify-between px-32 max-w-screen-lg pl-0 sm:pl-5 md:p-auto lg:max-w-xl'>
+                todo.map(todos => (
+                    <li key={todos.id} className='list-none sm:flex sm:justify-around max-w-full pl-0 sm:px-5 md:px-auto'>
+                        {
+                            // edit ?
+                            editId === todos.id ?
+                                (
+                                    checkButton = true,
+                                    editButton = false,
+                                    <div>
+                                        <input type="text" value={title} onChange={editHandler} maxLength='20' />
+                                    </div>
+                                ) :
+                                (
+                                    checkButton = false,
+                                    editButton = true,
+                                    <div>
+                                        <h4 > {todos.title}</h4>
+                                    </div>
+                                )
+                        }
+
+                        <div className=' flex justify-center pb-5 sm:pb-0 gap-10 '>
                             {
-                                // edit ?
-                                editId === todos.id ?
-                                    (
-                                        checkButton = true,
-                                        editButton = false,
-                                        <tr>
-                                            <input type="text" value={title} onChange={editHandler} />
-                                        </tr>
-                                    ) :
-                                    (
-                                        checkButton = false,
-                                        editButton = true,
-                                        <tr>
-                                            <h4 > {todos.title}</h4>
-                                        </tr>
-                                    )
+                                checkButton &&
+                                <div className='flex align-middle gap-1 cursor-pointer text-green-600 font-bold' onClick={() => { checkHandler(todos) }}>
+                                    <i className="ri-check-fill"></i>
+                                    Check
+                                </div>
                             }
 
-                            <tr>
-                                <div className='flex gap-5'>
-                                    {
-                                        checkButton &&
-                                        <div className='flex align-middle gap-1' onClick={() => { checkHandler(todos) }}>
-                                            <i className="ri-check-fill"></i>
-                                            Check
-                                        </div>
-                                    }
-
-                                    {
-                                        editButton &&
-                                        <div className='flex align-middle gap-1' onClick={() => { setTitle(todos.title); setEditId(todos.id) }}>
-                                            <i className="ri-pencil-fill"></i>
-                                            Edit
-                                        </div>
-                                    }
-                                    <div className='flex align-middle gap-1' onClick={() => { deleteHandler(todos) }}>
-                                        <i className="ri-delete-bin-5-fill"></i>
-                                        Delete
-                                    </div>
+                            {
+                                editButton &&
+                                <div className='flex align-middle gap-1 cursor-pointer text-purple-800' onClick={() => { setTitle(todos.title); setEditId(todos.id) }}>
+                                    <i className="ri-pencil-fill"></i>
+                                    Edit
                                 </div>
-                            </tr>
-                        </li>
-                    ))
-                }
-            </table>
+                            }
+                            <div className='flex align-middle gap-1 cursor-pointer text-red-600' onClick={() => { deleteHandler(todos) }}>
+                                <i className="ri-delete-bin-5-fill"></i>
+                                Delete
+                            </div>
+                        </div>
+                    </li>
+                ))
+            }
         </div >
     )
 }
