@@ -4,7 +4,7 @@ import { v4 as uuid4 } from 'uuid'
 function Form({ input, setInput, todo, setTodo }) {
 
     const inputHandler = e => {
-        setInput(e.target.value)
+        setInput(e.target.value < 20)
     }
     const submitHandler = e => {
         e.preventDefault()
