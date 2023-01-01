@@ -1,37 +1,37 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { initializeApp } from "firebase/app";
-import { onSnapshot, doc, deleteDoc } from 'firebase/firestore'
+import { doc, getDocs, deleteDoc } from 'firebase/firestore'
 import { firebaseConfig, db, connectionReference } from '../firebase/FirebaseConfig'
 
 initializeApp(firebaseConfig);
 
-let list = []
-
 function ViewData() {
-    // const [todo, setTodo] = useState([]);
-    // getDocs(connectionReference)
-    //     .then((snapshot) => {
-    //         snapshot.docs.map((doc) => (
-    //             list.push({ ...doc.data(), id: doc.id }),
-    //             // setTodo([{ ...doc.data(), id: doc.id }]),
-    //             console.log('Todo Data', list)
-    //         )
-    //         )
-    //     })
-    //     .catch(err => {
-    //         console.log(err.message)
-    //     })
+    const [state, setstate] = useState([]);
 
-    onSnapshot(connectionReference, (snapshot) => {
-        snapshot.docs.forEach((doc) => {
-            list.push({
-                ...doc.data(), id: doc.id
+    useEffect(() => {
+        FetchData()
+    }, []);
+
+    useEffect(() => {
+        console.log(state)
+    }, [state]);
+
+    function FetchData() {
+        getDocs(connectionReference)
+            .then((snapshot) => {
+                const task = snapshot.docs.map(doc => ({
+                    data: doc.data(),
+                    id: doc.id
+                }))
+                setstate(task)
+
             })
-        })
-    })
+            .catch(err => console.log(err.message))
+    }
 
     const deleteHandler = (id) => {
+        console.log('clicked delete', id)
         const documentReference = doc(db, 'tasklist', id)
         deleteDoc(documentReference)
     }
@@ -39,18 +39,13 @@ function ViewData() {
         <div >
             <h2>view from firebase</h2>
             {
-                list.map((lists) => (
-                    <li key={lists.id} className='list-none flex justify-around'>{lists.task}
-                        <div>
-                            <p onClick={() => deleteHandler(lists.id)}>delete</p>
+                state.map((lists) => (
+                    <li key={lists.id} className='list-none lg:flex lg:justify-between lg:px-40'>{lists.data.task}
+                        <div className='mb-2'>
+                            <button className='px-5 py-2 rounded-md bg-purple-700' onClick={() => deleteHandler(lists.id)}>delete</button>
                         </div>
                     </li>
                 ))
-            }
-            {
-                useEffect(() => {
-                    console.log('data in list', list)
-                }, [])
             }
         </div >
     )

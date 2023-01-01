@@ -18,10 +18,10 @@ function App() {
         todo={todo}
         setTodo={setTodo}
       />
-      <ListItems
+      {/* <ListItems
         todo={todo}
         setTodo={setTodo}
-      />
+      /> */}
       <ViewData />
       <Footer />
     </div>

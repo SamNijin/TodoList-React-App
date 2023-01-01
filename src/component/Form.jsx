@@ -12,14 +12,15 @@ function Form({ input, setInput, todo, setTodo }) {
     const inputHandler = e => {
         setInput(e.target.value)
     }
-    const submitHandler = e => {
-        e.preventDefault()
-        setTodo([...todo, { id: uuid4(), title: input }])
-        setInput('')
+    const submitHandler = () => {
+        // e.preventDefault()
+        // setTodo([...todo, { id: uuid4(), title: input }])
+
         addDoc(connectionReference, {
             id: uuid4(),
             task: input
         })
+        setInput('')
     }
     let color = ''
     input.length <= 7 ?
