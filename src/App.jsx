@@ -4,6 +4,7 @@ import Footer from './component/Footer';
 import Form from './component/Form';
 import Header from './component/Header';
 import ListItems from './component/ListItems';
+import ViewData from './component/ViewData';
 
 function App() {
   const [input, setInput] = useState('');
@@ -17,10 +18,11 @@ function App() {
         todo={todo}
         setTodo={setTodo}
       />
-      <ListItems
+      {/* <ListItems
         todo={todo}
         setTodo={setTodo}
-      />
+      /> */}
+      <ViewData />
       <Footer />
     </div>
   );
