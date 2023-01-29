@@ -31,7 +31,7 @@ function App() {
         setPassword={setPassword}
       /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/TodoList-React-App" element={<Home />} />
         <Route
           path="/add"
           element={
