@@ -31,9 +31,9 @@ function App() {
         setPassword={setPassword}
       /> */}
       <Routes>
-        <Route path="/TodoList-React-App" element={<Home />} />
+        <Route path="TodoList-React-App/" element={<Home />} />
         <Route
-          path="/TodoList-React-App/add"
+          path="TodoList-React-App/add"
           element={
             <div>
               <Header />
@@ -50,7 +50,7 @@ function App() {
         />
 
         <Route
-          path="/TodoList-React-App/login"
+          path="TodoList-React-App/login"
           element={
             <Login
               email={email}
@@ -62,7 +62,7 @@ function App() {
           }
         />
         <Route
-          path="/TodoList-React-App/signup"
+          path="TodoList-React-App/signup"
           element={
             <Signup
               email={email}
