@@ -8,6 +8,7 @@ import ViewData from "./component/ViewData";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import Home from "./component/Home";
 
 function App() {
   const [input, setInput] = useState("");
@@ -30,6 +31,7 @@ function App() {
         setPassword={setPassword}
       /> */}
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route
           path="/add"
           element={
