@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Signup(props) {
@@ -82,8 +83,14 @@ function Signup(props) {
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                Sign Up
+                Sign up
               </button>
+              <Link
+                to="/login"
+                className="text-base text-red-600 underline text-left"
+              >
+                Click to log in
+              </Link>
             </div>
           </form>
         </div>

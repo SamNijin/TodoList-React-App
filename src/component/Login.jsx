@@ -1,5 +1,6 @@
 import React from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 function Login(props) {
   let email;
@@ -74,7 +75,6 @@ function Login(props) {
                   />
                 </div>
               </div>
-
               <div>
                 <button
                   type="submit"
@@ -82,6 +82,12 @@ function Login(props) {
                 >
                   Sign in
                 </button>
+                <Link
+                  to="/signup"
+                  className="text-base text-red-600 underline text-left"
+                >
+                  Click to sign up
+                </Link>
               </div>
             </form>
           </div>
