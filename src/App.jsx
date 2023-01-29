@@ -59,6 +59,17 @@ function App() {
             />
           }
         />
+        <Route
+          path="/signup"
+          element={
+            <Signup
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+            />
+          }
+        />
       </Routes>
     </div>
   );
