@@ -225,7 +225,7 @@ function Home() {
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-center text-gray-600 text-sm md:space-x-8 space-y-1 md:space-y-0">
             <span className="font-bold">You can contact us:</span>
             <a
-              href="#"
+              href="!"
               className="flex items-center space-x-1"
               target="_blank"
               title="Call"
@@ -241,7 +241,7 @@ function Home() {
               <span>+1 123-123-1234</span>
             </a>
             <a
-              href="#"
+              href="!"
               className="flex items-center space-x-1"
               target="_blank"
               title="Email"

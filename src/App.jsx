@@ -3,7 +3,7 @@ import { useState } from "react";
 import Footer from "./component/Footer";
 import Form from "./component/Form";
 import Header from "./component/Header";
-import ListItems from "./component/ListItems";
+// import ListItems from "./component/ListItems";
 import ViewData from "./component/ViewData";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
@@ -31,9 +31,9 @@ function App() {
         setPassword={setPassword}
       /> */}
       <Routes>
-        <Route path="TodoList-React-App/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
-          path="TodoList-React-App/add"
+          path="/add"
           element={
             <div>
               <Header />
@@ -50,7 +50,7 @@ function App() {
         />
 
         <Route
-          path="TodoList-React-App/login"
+          path="/login"
           element={
             <Login
               email={email}
@@ -62,7 +62,7 @@ function App() {
           }
         />
         <Route
-          path="TodoList-React-App/signup"
+          path="/signup"
           element={
             <Signup
               email={email}
