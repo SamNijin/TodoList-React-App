@@ -37,7 +37,7 @@ function Signup(props) {
   };
   return (
     <div className="flex justify-center items-center h-screen bg-blue-300">
-      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-12 bg-blue-200 rounded-3xl w-1/5">
+      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-12 bg-blue-200 rounded-3xl w-fit md:w-2/5 lg:w-2/6 xl:w-1/5 ">
         <div className="w-full max-w-md space-y-8">
           <div>
             {/* <img
